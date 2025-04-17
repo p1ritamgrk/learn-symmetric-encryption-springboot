@@ -6,10 +6,7 @@ import com.cryptography.learn.p1ritamgrk.service.SymmetricEncryptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -27,5 +24,10 @@ public class SymmetricEncryptionController {
     public ResponseEntity<ResponseDto> getSymmetricEncryption(@RequestBody RequestDto requestDto)
             throws NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         return new ResponseEntity<>(symmetricEncryptionService.getSymmetricEncryption(requestDto),HttpStatus.OK);
+    }
+
+    @GetMapping()
+    public ResponseEntity<ResponseDto> getEncryption() {
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
